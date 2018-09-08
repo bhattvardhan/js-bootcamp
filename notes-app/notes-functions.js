@@ -24,7 +24,6 @@ const removeNote = function (id) {
 const generateNoteDOM = function (note) {
     const noteElement = document.createElement('div')
     const noteTextElement = document.createElement('a')
-    noteTextElement.setAttribute('href', `/edit.html#${note.id}`)
     const deleteNoteButton = document.createElement('button')
 
     deleteNoteButton.textContent = 'x'
@@ -35,12 +34,13 @@ const generateNoteDOM = function (note) {
         renderNotes(notes, filters)
     })
 
-    if (note.title > 0) {
+    if (note.title.length > 0) {
         noteTextElement.textContent = note.title
     } else {
         noteTextElement.textContent = 'Unnamed note'
     }
 
+    noteTextElement.setAttribute('href', `/edit.html#${note.id}`)
     noteElement.appendChild(noteTextElement)
 
     return noteElement
