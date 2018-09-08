@@ -23,7 +23,8 @@ const removeNote = function (id) {
 
 const generateNoteDOM = function (note) {
     const noteElement = document.createElement('div')
-    const noteTextElement = document.createElement('span')
+    const noteTextElement = document.createElement('a')
+    noteTextElement.setAttribute('href', `/edit.html#${note.id}`)
     const deleteNoteButton = document.createElement('button')
 
     deleteNoteButton.textContent = 'x'
