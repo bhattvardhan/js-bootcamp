@@ -69,6 +69,7 @@ const generateTodoDOM = function (todo) {
     
     const selectTodoCheckbox = document.createElement('input')
     selectTodoCheckbox.setAttribute('type', 'checkbox')
+    selectTodoCheckbox.checked = todo.status
     todoElement.appendChild(selectTodoCheckbox)
     selectTodoCheckbox.addEventListener('change', function () {
         toggleTodo(todo.id)
