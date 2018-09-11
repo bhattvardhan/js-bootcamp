@@ -65,7 +65,7 @@ const generateTodoDOM = (todo) => {
     selectTodoCheckbox.setAttribute('type', 'checkbox')
     selectTodoCheckbox.checked = todo.status
     todoElement.appendChild(selectTodoCheckbox)
-    selectTodoCheckbox.addEventListener('change', function () {
+    selectTodoCheckbox.addEventListener('change', () => {
         toggleTodo(todo.id)
         saveTodos(todos)
         renderTodos(todos, filters)
@@ -78,7 +78,7 @@ const generateTodoDOM = (todo) => {
     const removeTodoButton = document.createElement('button')
     removeTodoButton.textContent = 'x'
     todoElement.appendChild(removeTodoButton)
-    removeTodoButton.addEventListener('click', function () {
+    removeTodoButton.addEventListener('click', () => {
         removeTodo(todo.id)
         saveTodos(todos)
         renderTodos(todos, filters)

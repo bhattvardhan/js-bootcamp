@@ -26,7 +26,7 @@ const generateNoteDOM = (note) => {
 
     deleteNoteButton.textContent = 'x'
     noteElement.appendChild(deleteNoteButton)
-    deleteNoteButton.addEventListener('click', function () {
+    deleteNoteButton.addEventListener('click', () => {
         removeNote(note.id)
         saveNotes(notes)
         renderNotes(notes, filters)
