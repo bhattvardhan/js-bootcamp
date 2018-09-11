@@ -1,4 +1,5 @@
 let notes = getSavedNotes()
+const timestamp = moment().valueOf()
 
 const filters = {
     searchText: ''
@@ -11,7 +12,9 @@ document.querySelector('#create-note').addEventListener('click', function (e) {
     notes.push({
         id: uniqueID,
         title: '',
-        body: ''
+        body: '',
+        createdAt: timestamp,
+        updatedAt: timestamp
     })
     saveNotes(notes)
     location.assign(`/edit.html#${uniqueID}`)
