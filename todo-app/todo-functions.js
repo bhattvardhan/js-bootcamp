@@ -1,4 +1,4 @@
-const getSavedTodos = function () {
+const getSavedTodos = () => {
     const todosJSON = localStorage.getItem('todos')
 
     if (todosJSON !== null) {
@@ -8,17 +8,17 @@ const getSavedTodos = function () {
     }
 }
 
-const saveTodos = function (todos) {
+const saveTodos = (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
-const generateSummaryDOM = function (incompleteTodos) {
+const generateSummaryDOM = (incompleteTodos) => {
     const newParagraph = document.createElement('h2')
     newParagraph.textContent = `You have ${incompleteTodos.length} todos left`
     return newParagraph
 }
 
-const addTodo = function (todoArray, value) {
+const addTodo = (todoArray, value) => {
     todoArray.push({
         id: uuidv4(),
         title: value,
@@ -26,45 +26,39 @@ const addTodo = function (todoArray, value) {
     })
 }
 
-const renderTodos = function (todos, filters) {
-    const filteredTodos = todos.filter(function (todo) {
+const renderTodos = (todos, filters) => {
+    const filteredTodos = todos.filter((todo) => {
         const searchTextMatch = todo.title.toLowerCase().includes(filters.searchText.toLowerCase())
         const hideCompletedMatch = !filters.hideCompleted || !todo.status
         
         return searchTextMatch && hideCompletedMatch
     })
 
-    const incompleteTodos = todos.filter(function (todo) {
-        return !todo.status
-    })
+    const incompleteTodos = todos.filter((todo) => !todo.status)
 
     document.querySelector('#todo').innerHTML = ''
     document.querySelector('#todo').appendChild(generateSummaryDOM(incompleteTodos))
 
-    filteredTodos.forEach(function (todo) {
+    filteredTodos.forEach((todo) => {
         document.querySelector('#todo').appendChild(generateTodoDOM(todo))
     })
 }
 
-const removeTodo = function (id) {
-    const todoIndex = todos.findIndex(function (todo) {
-        return todo.id === id
-    })
+const removeTodo = (id) => {
+    const todoIndex = todos.findIndex((todo) => todo.id === id)
     if (todoIndex > -1) {
         todos.splice(todoIndex, 1)
     }
 }
 
-const toggleTodo = function (id) {
-    const todo = todos.find(function (todo) {
-        return todo.id === id
-    })
+const toggleTodo = (id) => {
+    const todo = todos.find((todo) => todo.id === id)
     if (todo !== undefined) {
         todo.status = !todo.status
     }
 }
 
-const generateTodoDOM = function (todo) {
+const generateTodoDOM = (todo) => {
     const todoElement = document.createElement('div')
     
     const selectTodoCheckbox = document.createElement('input')

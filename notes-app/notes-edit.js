@@ -4,9 +4,7 @@ const lastUpdatedElement = document.querySelector('#last-edited')
 const removeNoteElement = document.querySelector('#remove-note')
 const noteID = location.hash.substring(1)
 let notes = getSavedNotes()
-let note = notes.find(function (note) {
-    return note.id === noteID
-})
+let note = notes.find((note) => note.id === noteID)
 
 if (note === undefined) {
     location.assign('/index.html')
