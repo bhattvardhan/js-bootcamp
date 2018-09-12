@@ -1,17 +1,26 @@
 const whatIsTheScore = function (studentScore, totalPossibleScore) {
-    const result = studentScore / totalPossibleScore * 100
-    if (result >= 90) {
-        console.log(`You've got a A, ${result}!`)
-    } else if (result >= 80 && result < 90) {
-        console.log(`You've got a B, ${result}!`)
-    } else if (result >= 70 && result < 80) {
-        console.log(`You've got a C, ${result}!`)
-    } else if (result >= 60 && result < 70) {
-        console.log(`You've got a D, ${result}!`)
-    } else {
-        console.log(`You've got a F, ${result}!`)
+    if (typeof studentScore !== 'number' || typeof totalPossibleScore !== 'number') {
+        throw Error('Please provide numbers only')   
     }
+    const result = studentScore / totalPossibleScore * 100
+    let letterGrade = ''
+    if (result >= 90) {
+        letterGrade = 'A'
+    } else if (result >= 80) {
+        letterGrade = 'B'
+    } else if (result >= 70) {
+        letterGrade = 'C'
+    } else if (result >= 60) {
+        letterGrade = 'D'
+    } else {
+        letterGrade = 'E'
+    }
+    return `You've got a(n) ${letterGrade}, ${result}%!`
 }
 
-whatIsTheScore(420, 500)
-whatIsTheScore(100, 500)
+try {
+    const result = whatIsTheScore('a', 500)
+    console.log(result)
+} catch (e) {
+    console.log(e.message)
+}
