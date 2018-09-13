@@ -19,6 +19,16 @@ Hangman.prototype.getStatus = function () {
     }
 }
 
+Hangman.prototype.getStatusMessage = function () {
+    if (this.status === 'playing') {
+        return `Guesses left: ${this.noOfGuesses}`
+    } else if (this.status === 'failed') {
+        return `Nice try! The word was "${this.guessedWord.join('')}"`
+    } else if (this.status === 'finished') {
+        return 'Great work! You guessed the word.'
+    }
+}
+
 Hangman.prototype.getPuzzle = function () {
     let puzzle = ''
 
@@ -37,6 +47,10 @@ Hangman.prototype.makeAGuess = function (guess) {
     guess = guess.toLowerCase()
     const isUnique = !this.guessedLetters.includes(guess)
     const isBadGuess = !this.guessedWord.includes(guess)
+
+    if (this.status !== 'playing') {
+        return
+    }
 
     if (isUnique) {
         this.guessedLetters.push(guess)
