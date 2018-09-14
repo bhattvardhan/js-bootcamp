@@ -2,7 +2,7 @@
 
 const guessWordElement = document.querySelector('#guess-word')
 const remainingGuessElement = document.querySelector('#remaining-guesses')
-const game1 = new Hangman('cat', 2)
+const game1 = new Hangman('car park', 2)
 
 guessWordElement.textContent = game1.puzzle
 remainingGuessElement.textContent = game1.statusMessage
