@@ -7,11 +7,11 @@ class Person {
     }
     getBio() {
         let bio = `${this.firstName} is ${this.age}.`
-        
+
         this.likes.forEach((like) => {
             bio += ` ${this.firstName} likes ${like}.`
         });
-        
+
         return bio
     }
     setName(fullName) {
@@ -21,9 +21,34 @@ class Person {
     }
 }
 
-const me = new Person('Vardhan', 'Bhatt', 28, ['Singing', 'Playing Table Tennis'])
-me.setName('Alexis Turner')
-console.log(me.getBio())
+class Employee extends Person {
+    constructor(firstName, lastName, age, position, likes) {
+        super(firstName, lastName, age, likes)
+        this.position = position
+    }
+    getBio() {
+        return `${this.firstName} ${this.lastName} is a ${this.position}`
+    }
+    getYearsLeftInService() {
+        return 65 - this.age
+    }
+}
 
-const person2 = new Person('James', 'Anderson', 34)
-console.log(person2.getBio())
+class Student extends Person {
+    constructor(firstName, lastName, age, grade, likes) {
+        super(firstName, lastName, age, likes)
+        this.grade = grade
+    }
+    updateGrade(grade) {
+        this.grade += grade
+    }
+    getBio() {
+        const status = this.grade >= 70 ? 'passing' : 'failing'
+        return `${this.firstName} is ${status} the class.`
+    }
+}
+
+const me = new Student('Vardhan', 'Bhatt', 28, 88, [])
+console.log(me.getBio())
+me.updateGrade(-20)
+console.log(me.getBio())
