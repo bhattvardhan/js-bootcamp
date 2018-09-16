@@ -14,7 +14,7 @@ window.addEventListener('keypress', (e) => {
     remainingGuessElement.textContent = game1.statusMessage
 })
 
-getPuzzle((error, puzzle) => {
+getPuzzle('3', (error, puzzle) => {
     if (error) {
         console.log(`Error: ${error}`)
     } else {
