@@ -20,8 +20,10 @@ getPuzzle('2').then((puzzle) => {
     console.log(`Error: ${error}`)
 })
 
-getCountry('IN').then((countryName) => {
-    console.log(countryName)
+getLocation().then((location) => {
+    return getCountry(location.country)
+}).then((country) => {
+    console.log(country.name)
 }).catch((error) => {
     console.log(`Error: ${error}`)
 })
