@@ -16,11 +16,13 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
 
 document.querySelector('#todo-form').addEventListener('submit', (e) => {
     e.preventDefault()
-    const newTodo = e.target.elements.newTodo.value
-    addTodo(todos, newTodo)
-    saveTodos(todos)
-    renderTodos(todos, filters)
-    e.target.elements.newTodo.value = ''
+    const newTodo = e.target.elements.newTodo.value.trim()
+    if(newTodo.length > 0) {
+        addTodo(todos, newTodo)
+        saveTodos(todos)
+        renderTodos(todos, filters)
+        e.target.elements.newTodo.value = ''
+    }
 })
 
 document.querySelector('#completed-todo').addEventListener('change', (e) => {
