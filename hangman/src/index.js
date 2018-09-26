@@ -1,5 +1,8 @@
 'use strict'
 
+import Hangman from './hangman'
+import getPuzzle from './requests'
+
 const guessWordElement = document.querySelector('#guess-word')
 const remainingGuessElement = document.querySelector('#remaining-guesses')
 let game1
@@ -30,15 +33,3 @@ const startGame = async () => {
 document.querySelector('#reset').addEventListener('click', startGame)
 
 startGame()
-
-// getPuzzle('2').then((puzzle) => {
-//     console.log(puzzle)
-// }).catch((error) => {
-//     console.log(`Error: ${error}`)
-// })
-
-// getCurrentCountry().then((country) => {
-//     console.log(country.name)
-// }).catch((error) => {
-//     console.log(`Error: ${error}`)
-// })
