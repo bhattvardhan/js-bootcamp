@@ -5,7 +5,6 @@ module.exports = {
     index: ["babel-polyfill", "./src/index.js"],
     edit: ["babel-polyfill", "./src/edit.js"]
   },
-  entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "public/scripts"),
     filename: "[name]-bundle.js"
