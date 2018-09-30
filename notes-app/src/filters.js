@@ -1,5 +1,3 @@
-"use strict";
-
 const filters = {
     searchText: "",
     sortBy: "byEdited"

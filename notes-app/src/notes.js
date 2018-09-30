@@ -1,5 +1,3 @@
-"use strict";
-
 import uuidv4 from "uuid/v4";
 import moment from "moment";
 
@@ -33,6 +31,8 @@ const createNote = () => {
   });
 
   saveNotes();
+
+  return uniqueID;
 };
 
 const removeNote = id => {
@@ -97,6 +97,8 @@ const updateNote = (id, updates) => {
   }
 
   saveNotes();
+
+  return note;
 };
 
 notes = loadNotes();

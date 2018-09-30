@@ -1,21 +1,26 @@
-"use strict";
+import { createNote } from "./notes";
+import { setFilters } from "./filters";
+import { renderNotes } from "./views";
 
-import { getNotes, createNote, removeNote, updateNote } from "./notes";
-import { getFilters, setFilters } from "./filters";
-// console.log(getNotes());
+renderNotes();
 
-// createNote();
-
-// removeNote();
-
-// updateNote("17003f00-3ac6-456c-b284-fd6d01bb3d50", {
-//     title: "My note title",
-//     body: "Some body loves you"
-// });
-
-console.log(getFilters());
-setFilters({
-  searchText: "Office",
-  sortBy: "byCreated"
+document.querySelector("#create-note").addEventListener("click", e => {
+  const uniqueID = createNote();
+  location.assign(`/edit.html#${uniqueID}`);
 });
-console.log(getFilters());
+
+document.querySelector("#search-text").addEventListener("input", e => {
+  setFilters({ searchText: e.target.value });
+  renderNotes();
+});
+
+document.querySelector("#filter-by").addEventListener("change", e => {
+  setFilters({ sortBy: e.target.value });
+  renderNotes();
+});
+
+window.addEventListener("storage", e => {
+  if (e.key === "notes") {
+    renderNotes();
+  }
+});
