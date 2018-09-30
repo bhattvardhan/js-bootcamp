@@ -2,13 +2,13 @@ import { getTodos, toggleTodo, removeTodo } from "./todos";
 import { getFilters, setFilters } from "./filters";
 
 const renderTodos = () => {
-  const filters = getFilters();
+  const { searchText, hideCompleted } = getFilters();
   const todosElement = document.querySelector("#todos");
   const filteredTodos = getTodos().filter(todo => {
     const searchTextMatch = todo.title
       .toLowerCase()
-      .includes(filters.searchText.toLowerCase());
-    const hideCompletedMatch = !filters.hideCompleted || !todo.status;
+      .includes(searchText.toLowerCase());
+    const hideCompletedMatch = !hideCompleted || !todo.status;
 
     return searchTextMatch && hideCompletedMatch;
   });
